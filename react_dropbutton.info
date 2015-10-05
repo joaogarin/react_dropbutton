@@ -1,0 +1,4 @@
+name = React Dropbutton
+description = Provides functionallity for a dropdown react button.
+core = 7.x
+package = React Dropbutton

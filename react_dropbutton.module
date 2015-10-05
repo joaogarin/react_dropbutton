@@ -1,0 +1,26 @@
+<?php
+
+function react_dropbutton_theme() {
+  $items = array(
+    'links__react_dropbutton' => array(
+      'variables' => array(
+        'title' => NULL,
+        'links' => NULL,
+        'image' => FALSE,
+        'class' => NULL,
+      ),
+      'function' => 'theme_links__react_dropbutton',
+      'file' => 'react_dropbutton.theme.inc',
+    )
+  );
+
+  return $items;
+}
+
+/**
+ *  Implements hook_preprocess_page().
+ */
+function react_dropbutton_preprocess_page(&$variables) {
+
+  drupal_add_js(drupal_get_path('module', 'react_dropbutton') . '/dist/dropbutton.js');
+}
