@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * Implements hook_menu().
+ */
+function react_dropbutton_menu() {
+  $items = array();
+  $items['react-dropbutton-test'] = array(
+    'title' => 'Test react dropbutton',
+    'page callback' => 'react_dropbutton_test_page',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
 function react_dropbutton_theme() {
   $items = array(
     'links__react_dropbutton' => array(
@@ -23,4 +37,36 @@ function react_dropbutton_theme() {
 function react_dropbutton_preprocess_page(&$variables) {
 
   drupal_add_js(drupal_get_path('module', 'react_dropbutton') . '/dist/dropbutton.js');
+}
+
+/**
+ *  Provides a test page for the react dropbutton.
+ */
+function react_dropbutton_test_page() {
+
+  $content['react-dropbutton__title'] = array(
+    '#type' => 'markup',
+    '#markup' => '<p>' . t("React button can be used via theme() function of drupal. By calling theme('links__react_dropbutton') and passing in the links variables links will be styled in a dropdown format. ") . '</p>',
+  );
+
+  $content['links'] = array(
+    '#theme' => 'links__react_dropbutton',
+    '#links' => array(
+      array(
+        'title' => t('Test link for react button'),
+        'href' => 'foo',
+        'attributes' => array('class' => array('foo_class')),
+      ),
+      array(
+        'title' => t('Yet another test link'),
+        'href' => 'bar',
+        'attributes' => array('class' => array('bar_class')),
+      ),
+    ),
+    "attributes" => array('class' => array('foo_bar_class')),
+  );
+
+  return $content;
+
+
 }

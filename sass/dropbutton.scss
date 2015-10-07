@@ -1,0 +1,108 @@
+$dropbutton__default-background: #dedede;
+$dropbutton__default-link-color: #666;
+
+.dropbutton {
+  background: $dropbutton__default-background;
+  border: 1px solid darken($dropbutton__default-background, 2%);
+  height: auto;
+  text-align: center;
+  padding: 0px;
+  position: relative;
+  width: auto;
+  display: inline-block;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $dropbutton__default-background;
+  }
+
+  a {
+    color: $dropbutton__default-link-color;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: $dropbutton__default-link-color;
+      text-decoration: none;
+    }
+  }
+
+  .dropbutton__trigger {
+    border-left: 1px solid darken($dropbutton__default-background, 2%);
+    color: $dropbutton__default-link-color;
+    width: 2.5em;
+    line-height: 2.3em;
+    text-align: center;
+    text-indent: 0px;
+    position: absolute;
+    cursor: pointer;
+    right: 0px;
+    height: 100%;
+    background-image: url(../images/arrow-down.svg);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: center 12px;
+
+    span {
+      display: none;
+    }
+
+    &:hover {
+      background-color: lighten($dropbutton__default-background, 5%);
+    }
+
+    a {
+      border: none;
+      span {
+        display: none;
+      }
+    }
+  }
+
+  .dropbutton__content {
+
+    ul {
+      padding: 0px;
+      margin: 0px;
+
+      li {
+        list-style: none;
+      }
+    }
+
+    .dropbutton__item {
+      margin-right: 2.5em;
+      padding: {
+        top: 0.4em;
+        bottom: 0.4em;
+        left: 1em;
+        right: 1em;
+      }
+
+      &:hover {
+        background-color: lighten($dropbutton__default-background, 5%);
+      }
+    }
+
+    .dropbutton__item.dropbutton__sub-item {
+      display: none;
+      border-top: 1px solid darken($dropbutton__default-background, 2%);
+      padding: {
+        top: 0.6em;
+        bottom: 0.6em;
+      }
+    }
+  }
+
+  &.open {
+    .dropbutton__item.dropbutton__sub-item {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+$variables['content']['links']['#theme'] = 'links__react_dropbutton';
